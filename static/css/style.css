@@ -1,0 +1,585 @@
+:root {
+    --primary-color: rgb(76, 194, 241); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* LOGIN PAGE STYLING STARTS HERE  */
+
+.login-page-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.login-page-wrapper .login-form {
+    padding: 3rem;    
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px gray;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-page-wrapper .login-form input {
+    font-size: 16px;
+    padding: .7rem 1.5rem;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 2px darkgray;
+    border-radius: 4px;
+}
+
+.login-page-wrapper .login-form .login-btn {
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: .7rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-page-wrapper .login-form .login-btn:hover {
+    box-shadow: 0px 0px 2px rgb(207, 204, 204);
+}
+
+/* TEACHER DASHBOARD STYLING STARTS HERE */
+
+
+.teacher-dashboard {
+    height: 100vh; /* Full viewport height */
+    width: 100%; /* Full viewport width */
+    display: flex;
+    flex-direction: column; /* Stack navbar on top */
+}
+
+.navbar-1 {
+    width: 100%; /* Full width of the dashboard */
+    height: auto; /* Adjust height as per content */
+    background-color: #f4f4f9; /* Example background */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem; /* Add some padding for content */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.content-wrapper {
+    flex: 1; /* Takes all remaining height after navbar */
+    display: flex; /* Sidebar and content side by side */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+.sidebar {
+    width: 15rem; /* Fixed width for sidebar */
+    background-color: #f4f4f9; /* Example background */
+    padding: 1rem; /* Optional padding for content inside */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar .sidebar-bottom {
+    
+}
+
+.sidebar .sidebar-bottom .logout-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dashboard-content {
+    flex: 1; /* Automatically takes remaining width */
+    padding: 1rem; /* Optional padding for content */
+    background-color: #ffffff; /* Example background */
+    overflow-y: auto; /* Enable scrolling for long content */
+}
+
+.teacher-dashboard-page-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.teacher-dashboard-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+    justify-content: start;
+}
+
+.page-main-heading {
+    color: rgb(78, 77, 77);
+    width: 100%;
+    text-align: start;
+}
+
+.navbar-1 .logo {
+    color: var(--primary-color);
+}
+
+.navbar-1 .profile-info .letter-img {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sidebar .links {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .links .sidebar-link {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    padding: .6rem .7rem;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary-color);
+    align-items: center;
+    border-radius: 5px;
+    text-decoration: none;
+    
+}
+
+.active-sidebar-link {
+    color: white !important;
+    background-color: var(--primary-color);
+}
+
+
+/* TEACHER DASHBOARD HOME PAGE STYLING STARTS HERE  */
+
+.cards-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.cards-row .count-card {
+    width: 25%;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    box-shadow: 0px 5px 7px gray;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.cards-row .count-card:nth-child(2) {
+    background-color: #4CAF50;
+}
+
+.cards-row .count-card:nth-child(3) {
+    background-color: #2fb49c;
+}
+
+.graphs-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.graphs-row .graph-wrapper {
+    width: 50%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.graphs-row .graph-wrapper canvas {
+    max-height: 25rem;
+}
+
+
+/* DASHBOARD STUDENTS PAGE WRAPPER  */
+
+
+
+.table-container {
+    width: 100%;
+    margin: 20px;
+    overflow-x: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.modern-table thead {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.modern-table th, .modern-table td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.modern-table th:first-child, .modern-table td:first-child {
+    text-align: center;
+}
+
+.modern-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.modern-table img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
+
+.modern-table tr:last-child td {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .modern-table th, .modern-table td {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .modern-table img {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+
+.student-controls-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 2rem 1rem;
+    padding: 0rem 1rem;
+    justify-content: space-between;
+}
+
+
+/* Add Student Button */
+.add-student-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-student-btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow-y: scroll;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 8px;
+    width: 40%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.table-row-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.table-row-link:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+
+
+
+/* TEACHER DASHBOARD STUDENT'S DETAILS PAGE  */
+
+.student-details-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-details-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.student-details-form .form-img-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.student-details-form .form-img-group img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px gray;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group select {
+    height: auto;
+}
+
+.save-button {
+    padding: 0.8rem 2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.save-button:hover {
+    background-color: #0056b3;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.search-btn {
+    padding: 0.8rem 2rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #4CAF50;
+    align-self: flex-end;
+}
+/* TEACHER DASHBOARD COURSES PAGE STYLING STARTS HERE  */
+
+.course-controls-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin: 2rem 1rem;
+    padding: 0rem 1rem;   
+}
+
+.add-course-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.course-details-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-details-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* TEACHER DASHBOARD ATTENDANCE PAGE STYLING STARTS HERE  */
+
+
+.attendance-table-wrapper {
+    margin-top: 2rem;
+    overflow-x: auto;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.attendance-table td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.attendance-table th, .attendance-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.attendance-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.attendance-table input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+.attendance-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;    
+}
+
+.attendance-controls-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.attendance-controls-wrapper .update-btn {
+    padding: 0.8rem 2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;    
+}

@@ -1,0 +1,91 @@
+{% extends 'teacherDashboard/base.html' %}
+
+{% block teacher_content %}
+{% load static %}
+
+
+<h2 class="page-main-heading">Students</h2>
+
+<div class="student-controls-wrapper">
+    <button class="add-student-btn" onclick="openStudentModal()">Add Student</button>
+    
+    <!-- Search Form -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by name or email" class="search-input">
+        <button class="search-btn" onclick="searchStudents()">Search</button>
+    </div>
+</div>
+
+<div class="table-container">
+    <table class="modern-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Student Name</th>
+                <th>Email</th>
+                <th>Grade</th>
+                <th>Faculty</th>
+                <th>Related Courses</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="studentTableBody">
+            {% for student in students %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ student.user.first_name }} {{student.user.last_name}}</td>
+                <td>{{ student.user.email }}</td>
+                <td>{{ student.grade }}</td>
+                <td>{{ student.faculty }}</td>
+                <td>
+                    {% for course in student.courses.all %}
+                    {{ course }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{% url 'student_details' student.id %}" class="details-button">Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" id="addStudentModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeStudentModal()">&times;</span>
+        <h2>Add Student</h2>
+        <form id="addStudentForm">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="first_name" required />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="last_name" required />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Grade</label>
+                <input type="text" id="grade" name="grade" required />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Faculty</label>
+                <input type="text" id="faculty" name="faculty" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit" class="submit-btn">Add Student</button>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'js/teacherDashboardScripts/studentsPageScript.js' %}"></script>
+
+
+{% endblock %}

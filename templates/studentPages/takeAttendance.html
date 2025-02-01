@@ -1,0 +1,69 @@
+{% extends 'studentPages/base.html' %}
+
+
+{% block student_content %}
+{% load static %}
+
+<div class="camera-wrapper">
+    <video id="cameraStream" autoplay playsinline></video>
+    <button id="captureButton" class="capture-btn">Capture Photo <i class="fa fa-camera"></i> </button>
+    <button id="uploadButton" class="capture-btn" style="display: none; margin-bottom: 1rem;">Upload Image <i class="fa fa-upload"></i> </button>
+    <canvas id="photoCanvas" style="display: none;"></canvas>
+    <div id="photoContainer"></div>
+</div>
+
+<script>
+    window.onload = function () {
+        const video = document.getElementById('cameraStream');
+        const canvas = document.getElementById('photoCanvas');
+        const captureButton = document.getElementById('captureButton');
+        const uploadButton = document.getElementById('uploadButton');
+        const photoContainer = document.getElementById('photoContainer');
+
+        let imageData = '';
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((err) => {
+                console.log("Camera Not Allowed");
+            });
+
+        captureButton.addEventListener('click', () => {
+            canvas.style.display = 'block';
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            imageData = canvas.toDataURL('image/png');
+
+
+            uploadButton.style.display = 'inline-block';
+        });
+
+        uploadButton.addEventListener('click', () => {
+            if (imageData) {
+                fetch("{% url 'update_webcam_img' %}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `imageData=${encodeURIComponent(imageData)}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    window.location.href = '/student/attendance/'
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+    }
+</script>
+
+
+{% endblock %}

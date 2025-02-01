@@ -1,0 +1,84 @@
+{% extends 'teacherDashboard/base.html' %}
+
+{% block teacher_content %}
+<h2 style="margin-bottom: 1rem;" class="page-main-heading">Overview</h2>
+
+<div class="cards-row">
+    <a href="{% url 'students' %}" class="count-card">
+        <h1>Students {{students_count}}</h1>
+    </a>
+    <a href="{% url 'courses' %}" class="count-card">
+        <h1>Courses {{courses_count}}</h1>
+    </a>
+    <a href="{% url 'analytics' %}" class="count-card">
+        <h1>Analytics</h1>
+    </a>
+</div>
+
+<div class="graphs-row">
+    <div class="graph-wrapper">
+        <h3>Students' Marks Distribution</h3>
+        <canvas id="marksBarChart"></canvas>
+    </div>
+    <div class="graph-wrapper">
+        <h3>Attendance Distribution</h3>
+        <canvas id="attendancePieChart"></canvas>
+    </div>
+    <div class="graph-wrapper">
+        <h3>Students per Course</h3>
+        <canvas id="courseStudentChart"></canvas>
+    </div>
+</div>
+
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Bar Chart - Students' Marks Distribution
+    const marksCtx = document.getElementById('marksBarChart').getContext('2d');
+    new Chart(marksCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Muhammad', 'John', 'Williams', 'Ayaz', 'Ibrahim'],
+            datasets: [{
+                label: 'Marks',
+                data: [85, 92, 75, 60, 88],
+                backgroundColor: 'rgb(76, 194, 241)',
+                borderColor: 'rgba(54, 252, 250, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Marks'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Students'
+                    }
+                }
+            }
+        }
+    });
+
+    const attendanceCtx = document.getElementById('attendancePieChart').getContext('2d');
+    new Chart(attendanceCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Present', 'Absent'],
+            datasets: [{
+                data: [80, 20],
+                backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)']
+            }]
+        }
+    });
+
+    
+</script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'teacherDashboard/base.html' %}
+
+{% block teacher_content %}
+<div class="course-details-wrapper">
+    <h2 class="page-main-heading">Edit Course Details</h2>
+
+    <form id="course-details-form" method="POST" action="{% url 'update_course' course.id %}" class="course-details-form">
+        {% csrf_token %}
+
+        <div class="form-group" style="margin-top: 2rem;">
+            <label for="course_title">Title:</label>
+            <input type="text" id="course_title" name="course_title" value="{{ course.title }}" required>
+        </div>
+        <div class="form-group" style="margin-top: 2rem;">
+            <label for="course_title"> Duration:</label>
+            <input type="number" id="course_duration" name="course_duration" value="{{ course.duration }}" required>
+        </div>
+        <button type="submit" class="save-button">Save Changes</button>
+    </form>
+</div>
+
+{% endblock %}

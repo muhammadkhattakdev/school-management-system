@@ -1,0 +1,40 @@
+{% extends 'studentPages/base.html' %}
+
+{% block student_content %}
+
+<div class="attendance-page-wrapper">
+
+    <h2 class="page-main-heading">Attendance Record</h2>
+
+    <div class="attendance-controls-wrapper">
+        <div class="left-side"></div>
+        <div class="right-side">
+            <a href="{% url 'take_attendance_page' %}" class="take-attendance-btn">Take Attendance <i class="fa fa-camera"></i> </a>
+        </div>
+    </div>
+
+    <div class="attendance-table-wrapper">
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Attendance Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in attendance_data %}
+                <tr>
+                    <td>{{ record.day|date:"Y-m-d" }}</td>
+                    <td class="{% if record.status == 'Present' %}present-status{% else %}absent-status{% endif %}">
+                        {{ record.status }}
+                    </td>
+                    <td><img  src="{{ student.webcam_img.url }}" alt=""></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/studentPagesStyling.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>Students Attendence Management System</title>
+</head> 
+<body>
+
+    <div class="student-dashboard">
+        <div class="navbar-1">
+            <h1 class="logo">
+                LogoGoesHere
+            </h1>
+            <div class="profile-info">
+                <div class="letter-img">
+                    {{ request.user.first_name|slice:":1" }}
+
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            {% include 'studentPages/sidebar.html' %}
+            <div class="dashboard-content">
+                <div class="teacher-dashboard-page-wrapper">                    
+                    {% block student_content %}
+                    
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

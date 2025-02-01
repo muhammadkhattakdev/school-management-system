@@ -1,0 +1,78 @@
+{% extends 'teacherDashboard/base.html' %}
+
+{% block teacher_content %}
+<h2 class="page-main-heading">Attendance</h2>
+
+<form id="attendance-form" method="POST">
+    {% csrf_token %}
+    
+    <div class="attendance-controls-wrapper">
+        <div class="left-side">
+
+        </div>
+        <div class="right-side">
+            <button type="button" id="update-attendance-btn" class="update-btn">Update Attendance</button>
+        </div>
+    </div>
+    <div class="attendance-table-wrapper">
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th>Students</th>
+                    {% for day in days_in_week %}
+                        <th>{{ day|date:"Y-m-d" }}</th>
+                    {% endfor %}
+                    <th>Attendace Images</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in attendance_data %}
+                    <tr>
+                        <td>{{ data.student.user.first_name }}</td>
+                        {% for record in data.attendance %}
+                            <td>
+                                {% if record.date == today %}
+                                    <input type="checkbox" name="present_students[]" value="{{ data.student.id }}"
+                                    {% if record.present %}checked{% endif %}>
+                                {% elif record.date < today %}
+                                    <input type="checkbox" disabled {% if record.present %}checked{% endif %}>
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                        <td><img src="{{data.student.webcam_img.url}}" alt=""></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</form>
+
+<script>
+    document.getElementById('update-attendance-btn').addEventListener('click', function () {
+        const form = document.getElementById('attendance-form');
+        const formData = new FormData(form);
+
+        fetch("{% url 'update_attendance' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': "{{ csrf_token }}"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.success);
+            } else {
+                alert(data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
+
+
+
+{% endblock %}

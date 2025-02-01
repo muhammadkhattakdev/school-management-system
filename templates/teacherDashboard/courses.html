@@ -1,0 +1,64 @@
+{% extends 'teacherDashboard/base.html' %}
+
+{% block teacher_content %}
+{% load static %}
+
+<script src="{% static 'js/teacherDashboardScripts/coursesPageScript.js' %}"></script>
+
+<h2 class="page-main-heading">Courses</h2>
+
+<div class="course-controls-wrapper">
+    <button class="add-course-btn" onclick="openCourseModal()">Add Course</button>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search courses by title" />
+        <button class="search-btn" onclick="searchCourses()">Search</button>
+    </div>
+</div>
+
+<div class="table-container">
+    <table class="modern-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="coursesTableBody">
+            {% for course in courses %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ course.title }}</td>
+                <td>{{ course.duration }}</td>
+                <td>
+                    <a href="{% url 'course_details' course.id %}" class="details-button">Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" id="addCourseModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeCourseModal()">&times;</span>
+        <h2>Add Course</h2>
+        <form id="addCourseForm">
+            <div class="form-group" style="margin-top: 2rem;">
+                <label for="courseTitle">Title</label>
+                <input type="text" id="courseTitle" name="title" required />
+            </div>
+            <div class="form-group">
+                <label for="courseTitle">Duration</label>
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <input type="number" id="courseDuration" name="duration" required /> Weeks</span>
+            </div>
+            <button type="submit" class="submit-btn">Add Course</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

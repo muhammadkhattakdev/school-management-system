@@ -1,0 +1,59 @@
+{% extends 'studentPages/base.html' %}
+
+{% block student_content %}
+{% load static %}
+<div class="student-details-wrapper" style="margin-top: 2rem;">
+    <h2 class="page-main-heading">Profile</h2>
+
+    <form id="student-details-form"  method="POST" action="{% url 'update_student_profile' student.id %}" class="student-details-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-img-group">
+            <label for="user-profile-img">
+                <img src="{% if student.image %}{{ student.image.url }}{% else %}{% static 'images/dummy_profile.png' %}{% endif %}" alt="">
+            </label>
+            <input type="file" hidden name="profile_img" id="user-profile-img">
+        </div>
+        <div class="form-group"  style="margin-top: 2rem;">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" value="{{ student.user.first_name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" value="{{ student.user.last_name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="last_name">Grade:</label>
+            <input type="text" id="grade" name="grade" value="{{ student.grade }}" required>
+        </div>
+        <div class="form-group">
+            <label for="last_name">Faculty:</label>
+            <input type="text" id="faculty" name="faculty" value="{{ student.faculty }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ student.user.email }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter new password (optional)">
+        </div>
+
+        <div class="form-group">
+            <label for="courses">Courses:</label>
+            <select id="courses" name="courses" multiple>
+                {% for course in courses %}
+                <option value="{{ course.id }}" {% if course in student.courses.all %}selected{% endif %}>
+                    {{ course.title }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="save-button">Save Changes</button>
+    </form>
+</div>
+
+{% endblock %}

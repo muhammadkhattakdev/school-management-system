@@ -1,0 +1,30 @@
+{% load static %}
+<div class="sidebar">
+    <div class="links">
+        <a href="{% url 'student_home' %}"
+            class="sidebar-link {% if request.resolver_match.url_name == 'teacher_dashboard' %}active-sidebar-link{% endif %}">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="link-text">Dashboard</span>
+        </a>
+        <a href="{% url 'student_attendance_page' %}"
+            class="sidebar-link {% if request.resolver_match.url_name == 'students'  or request.resolver_match.url_name == 'student_details' %}active-sidebar-link{% endif %}">
+            <i class="fas fa-users"></i>
+            <span class="link-text">My Attendance</span>
+        </a>
+        <a href="{% url 'take_attendance_page' %}"
+            class="sidebar-link {% if request.resolver_match.url_name == 'students'  or request.resolver_match.url_name == 'student_details' %}active-sidebar-link{% endif %}">
+            <i class="fas fa-users"></i>
+            <span class="link-text">Take Attendance</span>
+        </a>
+        <a href="{% url 'student_profile' %}"
+            class="sidebar-link {% if request.resolver_match.url_name == 'courses' or request.resolver_match.url_name == 'course_details' %}active-sidebar-link{% endif %}">
+            <i class="fas fa-book"></i>
+            <span class="link-text">My Profile</span>
+        </a>
+    </div>
+    <div class="sidebar-bottom">
+        <a href="#" class="logout-link">
+            Logout
+        </a>
+    </div>
+</div>

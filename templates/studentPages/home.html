@@ -1,0 +1,15 @@
+{% extends 'studentPages/base.html' %}
+
+
+{% block student_content %}
+{% load static %}
+
+
+<div class="student-homepage-wrapper">
+    <a href="{% url 'student_attendance_page' %}" class="card-link">
+        Attendance Records
+    </a>
+</div>
+
+
+{% endblock %}

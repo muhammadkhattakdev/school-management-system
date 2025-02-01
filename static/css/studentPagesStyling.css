@@ -1,0 +1,328 @@
+:root {
+    --primary-color: rgb(76, 194, 241); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;   
+    box-sizing: border-box;
+}
+
+/* STUDENT DASHBOARD STYLING STARTS HERE  */
+
+
+.student-dashboard {
+    height: 100vh; /* Full viewport height */
+    width: 100%; /* Full viewport width */
+    display: flex;
+    flex-direction: column; /* Stack navbar on top */
+}
+
+.navbar-1 {
+    width: 100%; /* Full width of the dashboard */
+    height: auto; /* Adjust height as per content */
+    background-color: #f4f4f9; /* Example background */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem; /* Add some padding for content */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.content-wrapper {
+    flex: 1; /* Takes all remaining height after navbar */
+    display: flex; /* Sidebar and content side by side */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+.sidebar {
+    width: 15rem; /* Fixed width for sidebar */
+    background-color: #f4f4f9; /* Example background */
+    padding: 1rem; /* Optional padding for content inside */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar .sidebar-bottom {
+    
+}
+
+.sidebar .sidebar-bottom .logout-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dashboard-content {
+    flex: 1; /* Automatically takes remaining width */
+    padding: 1rem; /* Optional padding for content */
+    background-color: #ffffff; /* Example background */
+    overflow-y: auto; /* Enable scrolling for long content */
+}
+
+.student-dashboard-page-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.student-dashboard-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+    justify-content: start;
+}
+
+.page-main-heading {
+    color: rgb(78, 77, 77);
+    width: 100%;
+    text-align: start;
+}
+
+.navbar-1 .logo {
+    color: var(--primary-color);
+}
+
+.navbar-1 .profile-info .letter-img {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sidebar .links {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .links .sidebar-link {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    padding: .6rem .7rem;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary-color);
+    align-items: center;
+    border-radius: 5px;
+    text-decoration: none;
+    
+}
+
+.active-sidebar-link {
+    color: white !important;
+    background-color: var(--primary-color);
+}
+
+/* /////////////////////////////////// */
+
+.camera-wrapper {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+
+#cameraStream {
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid black;
+    width: 25rem;
+}
+
+.capture-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#photoContainer img {
+    margin-top: 15px;
+    max-width: 80%;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+}
+
+
+/* STUDENT PROFILE PAGE STYLING STARTS HERE  */
+
+.student-details-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.student-details-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group select {
+    height: auto;
+}
+
+.save-button {
+    padding: 0.8rem 2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.save-button:hover {
+    background-color: #0056b3;
+}
+
+.student-details-form .form-img-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.student-details-form .form-img-group img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px gray;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+
+/* STUDENT PAGES HOMEPAGE STYLING  */
+
+.student-homepage-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.student-homepage-wrapper .card-link {
+    background-color: #4CAF50;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0px 4px 5px gray;
+    padding: 1rem;
+    text-decoration: none;
+    margin-top: 4rem;
+    font-size: 32px;
+}
+
+
+/* ATTENDANCE PAGE STYLING  */
+
+.attendance-page-wrapper {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.attendance-table-wrapper {
+    margin-top: 2rem;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.attendance-table td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.attendance-table th {
+    background-color: #f4f4f4;
+}
+
+.present-status {
+    color: green;
+    font-weight: bold;
+}
+
+.absent-status {
+    color: red;
+    font-weight: bold;
+}
+
+.attendance-page-wrapper .attendance-controls-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    align-items: center;
+    
+}
+
+.attendance-page-wrapper .attendance-controls-wrapper .take-attendance-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+

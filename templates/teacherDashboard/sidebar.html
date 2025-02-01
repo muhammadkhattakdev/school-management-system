@@ -1,0 +1,35 @@
+{% load static %}
+<div class="sidebar">
+    <div class="links">
+        <a href="{% url 'teacher_dashboard' %}"
+            class="sidebar-link {% if request.resolver_match.url_name == 'teacher_dashboard' %}active-sidebar-link{% endif %}">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="link-text">Dashboard</span>
+        </a>
+        <a href="{% url 'students' %}"
+            class="sidebar-link {% if request.resolver_match.url_name == 'students'  or request.resolver_match.url_name == 'student_details' %}active-sidebar-link{% endif %}">
+            <i class="fas fa-users"></i>
+            <span class="link-text">Students</span>
+        </a>
+        <a href="{% url 'courses' %}"
+            class="sidebar-link {% if request.resolver_match.url_name == 'courses' or request.resolver_match.url_name == 'course_details' %}active-sidebar-link{% endif %}">
+            <i class="fas fa-book"></i>
+            <span class="link-text">Courses</span>
+        </a>
+        <a href="{% url 'attendance' %}"
+            class="sidebar-link {% if request.resolver_match.url_name == 'attendance' %}active-sidebar-link{% endif %}">
+            <i class="fas fa-calendar-check"></i>
+            <span class="link-text">Attendance</span>
+        </a>
+        <a href="{% url 'analytics' %}"
+            class="sidebar-link {% if request.resolver_match.url_name == 'analytics' %}active-sidebar-link{% endif %}">
+            <i class="fas fa-chart-bar"></i>
+            <span class="link-text">Analytics</span>
+        </a>
+    </div>
+    <div class="sidebar-bottom">
+        <a href="#" class="logout-link">
+            Logout
+        </a>
+    </div>
+</div>
