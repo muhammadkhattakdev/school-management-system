@@ -39,7 +39,7 @@
                                 {% endif %}
                             </td>
                         {% endfor %}
-                        <td><img src="{{data.student.webcam_img.url}}" alt=""></td>
+                        <td><img src="{% if data.student.webcam_img %} {{data.student.webcam_img.url}} {% endif %}" alt=""></td>
                     </tr>
                 {% endfor %}
             </tbody>

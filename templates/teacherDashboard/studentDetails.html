@@ -12,6 +12,12 @@
                 <img src="{% if student.image %}{{ student.image.url }}{% else %}{% static 'images/dummy_profile.png' %}{% endif %}" alt="">
             </label>
             <input type="file" hidden name="profile_img" id="user-profile-img">
+            <label>Profile Image</label>
+            
+        </div>
+        <div class="form-img-group">
+                <img src="{% if student.webcam_img %}{{ student.webcam_img.url }}{% else %}{% static 'images/dummy_profile.png' %}{% endif %}" alt="">
+            <label>Webcam Image</label>
         </div>
         <div class="form-group"  style="margin-top: 2rem;">
             <label for="first_name">First Name:</label>
